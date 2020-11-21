@@ -17,14 +17,12 @@ void tabuleiro::incluir(Casa * e) {
 		inicio = e;
 		e->setProx(e);
 		e->setPrev(e);
-
 	}
 	else{
 		e->setPrev(c);
 		e->setProx(inicio);
 		c->setProx(e);
 		inicio->setPrev(e);
-
 	}
     c = e;
 }

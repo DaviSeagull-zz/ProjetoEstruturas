@@ -6,7 +6,7 @@ Jogador::Jogador(int i) {
 
 	this->jogador = i;
     this->derrota = false;
-//	this->pilha_de_dinheiro;
+	this->pilha_de_dinheiro;
 
 }
 

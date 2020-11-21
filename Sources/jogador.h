@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <pilha.h>
+#include "pilha.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ class Jogador {
 		int * fila;
         int jogador;
         bool derrota = false;
-//        Pilha pilha_de dinheiro = new Pilha();
+        Pilha * pilha_de_dinheiro;
 
     public:
         Jogador(int i);

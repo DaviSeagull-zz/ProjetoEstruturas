@@ -6,8 +6,6 @@
 using namespace std;
 
 
-Pilha::Pilha() {}
-
 Pilha::Pilha(int n) {
 	topo = -1;
 	itens = new int[n];
