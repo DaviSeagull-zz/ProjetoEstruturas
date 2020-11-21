@@ -1,0 +1,5 @@
+
+*.exe
+*.o
+Sources/Sources.cbp
+Sources/Sources.depend
