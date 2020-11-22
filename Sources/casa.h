@@ -14,6 +14,7 @@ private:
     int pos;
     int jogador_proprietario;
     int status;
+    int marcado_por;
     Casa * prox;
     Casa * prev;
     vector<int> jogadores_na_pos;
@@ -30,9 +31,10 @@ public:
     static void removeJogadores(Casa * pos_j, int j);
     void setProx(Casa * e);
     void setPrev(Casa * e);
+    void setMarcadoPor(int marcado_por);
     int setStatus(int status);
 
-
+    int getMarcadoPor();
     int getPos();
     int getJogadorProprietario();
     int getJogadores();

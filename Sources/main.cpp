@@ -74,7 +74,6 @@ int main()
             if(j->getVivo()){
                 cleanScreen();
 
-                Jogador::showList();
                 tabuleiro.imprimir();
 
                 int opc_dados, sentido, andar_casas;

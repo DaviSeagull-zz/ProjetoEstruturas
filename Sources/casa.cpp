@@ -6,10 +6,19 @@ Casa::Casa(){
 	this->setPrev(NULL);
 	this->setStatus(0);
     this->setJogadorProprietario(0);
+    this->setMarcadoPor(0);
 }
 
 void Casa::setPos(int pos){
 	this->pos = pos;
+}
+
+void Casa::setMarcadoPor(int marcado_por){
+	this->marcado_por = marcado_por;
+}
+
+int Casa::getMarcadoPor(){
+	return this->marcado_por;
 }
 
 int Casa::getPos(){
@@ -27,7 +36,6 @@ void Casa::setJogadorProprietario(int jogador_proprietario){
 void Casa::addJogadores(int j){
     jogadores_na_pos.push_back(j);
 }
-
 
 void Casa::removeJogadores(Casa * pos_j, int j){
     auto it = find(pos_j->jogadores_na_pos.begin(), pos_j->jogadores_na_pos.end(), j);
@@ -55,7 +63,6 @@ Casa * Casa::getProx(){
 	return this->prox;
 }
 
-
 int Casa::getJogadorProprietario(){
 	return this->jogador_proprietario;
 }
@@ -75,5 +82,18 @@ Casa * Casa::walk(Casa * pos_j, int andar_casas, int sentido, int j){
     else
         for (int i = 0; i < andar_casas; i++)
             pos_final = pos_final->getPrev();
+
+    if(pos_final->getMarcadoPor() == 0){
+        pos_final->setMarcadoPor(j);
+        pos_final->setStatus(1);
+    } else if(pos_final->getMarcadoPor() == j) {
+        pos_final->setJogadorProprietario(j);
+        pos_final->setStatus(2);
+    }
+
+
+
+
+
     return pos_final;
 }

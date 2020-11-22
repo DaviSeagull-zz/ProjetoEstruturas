@@ -34,7 +34,7 @@ void Tabuleiro::incluir(Casa * e) {
 void Tabuleiro::imprimir(){
 
 	cout << "\nImpressao do tabuleiro\n";
-	cout << "Casa  Status  Jogador*  Jogadores** \n";
+	cout << "Casa  Status  MarcadoPor  Jogador*  Jogadores** \n";
 	if (!vazia()){
 		Casa * cursor = inicio;
 		int n = 0;
@@ -42,6 +42,7 @@ void Tabuleiro::imprimir(){
             if (n < 9){
                 cout << "  " << cursor->getPos() << "    ";
                 cout << "  " << cursor->getStatus()<< "     ";
+                cout << "  " << cursor->getMarcadoPor()<< "        ";
                 cout << "  " << cursor->getJogadorProprietario() << "       ";
                 cursor->showJogadores();
                 cout << "\n";
@@ -50,6 +51,7 @@ void Tabuleiro::imprimir(){
             else{
                 cout << "  " << cursor->getPos() << "   ";
                 cout << "  " << cursor->getStatus()<< "     ";
+                cout << "  " << cursor->getMarcadoPor()<< "        ";
                 cout << "  " << cursor->getJogadorProprietario() << "       ";
                 cursor->showJogadores();
                 cout << "\n";
