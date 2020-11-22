@@ -15,16 +15,18 @@ class Jogador {
 	private:
 		Casa * pos;
         int jogador;
-        int derrota = false;
+        int vivo;
         int moedas = 0;
 
     public:
         static vector<Jogador*> instances_;
         static void showList();
+        static Jogador * returnAddress(int i);
+
         Jogador(int i, int n_moedas, Casa * c);
 
         int getJogador();
-        bool getDerrota();
+        bool getVivo();
         int getMoedas();
         Casa * getPos();
 
@@ -33,8 +35,8 @@ class Jogador {
         void setJogador(int id);
         void setDerrota();
 
-        static Jogador * returnAddress(int i);
-        void updatePos(int andar_casas);
+
+        void updatePos(int andar_casas, int sentido);
 
 };
 

@@ -3,7 +3,6 @@
 
 #include "jogador.h"
 #include "tabuleiro.h"
-#include "casa.h"
 
 using namespace std;
 
@@ -13,7 +12,7 @@ Jogador::Jogador(int i, int n_moedas, Casa * c) {
 
     instances_.push_back(this);
 	this->jogador = i;
-    this->derrota = true;
+    this->vivo = true;
 	this->setMoedas(n_moedas);
 	this->setPos(c);
 
@@ -23,10 +22,9 @@ Jogador * Jogador::returnAddress(int i){
     return instances_[i];
 }
 
-void Jogador::updatePos(int andar_casas){
+void Jogador::updatePos(int andar_casas, int sentido){
     Casa * c_atual = this->getPos();
-    Casa::walk(c_atual, andar_casas);
-    this->getPos();
+    this->setPos(Casa::walk(c_atual, andar_casas, sentido));
 }
 
 void Jogador::setPos(Casa * c){
@@ -38,7 +36,7 @@ void Jogador::setMoedas(int n_moedas){
 }
 
 void Jogador::setDerrota(){
-	this->derrota = true;
+	this->vivo = false;
 }
 
 Casa * Jogador::getPos(){
@@ -49,8 +47,8 @@ int Jogador::getJogador(){
     return this->jogador;
 }
 
-bool Jogador::getDerrota(){
-    return this->derrota;
+bool Jogador::getVivo(){
+    return this->vivo;
 }
 
 int Jogador::getMoedas(){

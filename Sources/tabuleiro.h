@@ -11,7 +11,6 @@ class Tabuleiro {
 
     public:
     Tabuleiro();
-
     bool vazia();
     Casa * getInicio();
     void incluir(Casa * e);

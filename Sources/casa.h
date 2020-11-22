@@ -19,7 +19,7 @@ private:
 public:
     Casa();
 
-    static void walk(Casa* pos_j, int andar_casas);
+    static Casa * walk(Casa* pos_j, int andar_casas, int sentido);
 
     void setPos(int pos);
     void setJogadorProprietario(int jogador_proprietario);

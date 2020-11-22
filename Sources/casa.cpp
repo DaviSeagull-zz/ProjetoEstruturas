@@ -4,6 +4,9 @@
 Casa::Casa(){
 	this->setProx(NULL);
 	this->setPrev(NULL);
+	this->setStatus(0);
+    this->setJogadorProprietario(0);
+    this->setJogadoresNull();
 }
 
 void Casa::setPos(int pos){
@@ -23,11 +26,9 @@ void Casa::setJogadorProprietario(int jogador_proprietario){
 
 }
 
-void Casa::setJogadores(int jogadores[]){
-    for (int i = 0; i < sizeof(jogadores); i++){
-        this->jogadores_na_pos[i] = jogadores[i];
-    }
-}
+//void Casa::addJogadores(){
+//    jogadores_na_pos.push_back(this);
+//}
 
 void Casa::setJogadoresNull(){
     for (int i = 0; i < sizeof(jogadores_na_pos)/4; i++){
@@ -63,10 +64,20 @@ int Casa::getJogadorProprietario(){
 	return this->jogador_proprietario;
 }
 
-void walk(Casa * pos_j, int andar_casas){
+//void Casa::showJogadores() {
+//    for (vector<Jogador*>::iterator p = jogadores_na_pos.begin(); p != instances_.end(); ++p) {
+//        cout << (*p) << " ";
+//        cout << (*p)->getPos() << "\n";
+//    }
+//}
 
-    for (int i = 0; i < andar_casas; i++){
-        pos_j = pos_j->getProx();
-    }
-
+Casa * Casa::walk(Casa * pos_j, int andar_casas, int sentido){
+    Casa * pos_final = pos_j;
+    if(sentido == 1)
+        for (int i = 0; i < andar_casas; i++)
+            pos_final = pos_final->getProx();
+    else
+        for (int i = 0; i < andar_casas; i++)
+            pos_final = pos_final->getPrev();
+    return pos_final;
 }
