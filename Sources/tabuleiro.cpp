@@ -42,17 +42,17 @@ void Tabuleiro::imprimir(){
             if (n < 9){
                 cout << "  " << cursor->getPos() << "    ";
                 cout << "  " << cursor->getStatus()<< "     ";
-                cout << "  " << cursor->getJogadorProprietario() << "          ";
-                int * j = cursor->getJogadores();
-                cout << j[n] << "\n";
+                cout << "  " << cursor->getJogadorProprietario() << "       ";
+                cursor->showJogadores();
+                cout << "\n";
 
             }
             else{
                 cout << "  " << cursor->getPos() << "   ";
                 cout << "  " << cursor->getStatus()<< "     ";
-                cout << "  " << cursor->getJogadorProprietario() << "          ";
-                int * j = cursor->getJogadores();
-                cout << j[n] << "\n";
+                cout << "  " << cursor->getJogadorProprietario() << "       ";
+                cursor->showJogadores();
+                cout << "\n";
             }
 
             n++;

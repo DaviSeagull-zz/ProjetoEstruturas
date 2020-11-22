@@ -1,8 +1,10 @@
 #ifndef CASA_H
 #define CASA_H
 
+#include <algorithm>
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -14,25 +16,26 @@ private:
     int status;
     Casa * prox;
     Casa * prev;
-    int jogadores_na_pos[15];
+    vector<int> jogadores_na_pos;
 
 public:
     Casa();
 
-    static Casa * walk(Casa* pos_j, int andar_casas, int sentido);
+    static Casa * walk(Casa* pos_j, int andar_casas, int sentido, int j);
+    void showJogadores();
 
     void setPos(int pos);
     void setJogadorProprietario(int jogador_proprietario);
-    void setJogadores(int jogadores[]);
+    void addJogadores(int j);
+    static void removeJogadores(Casa * pos_j, int j);
     void setProx(Casa * e);
     void setPrev(Casa * e);
     int setStatus(int status);
-    void setJogadoresNull();
 
 
     int getPos();
     int getJogadorProprietario();
-    int * getJogadores();
+    int getJogadores();
     Casa * getProx();
     Casa * getPrev();
     int getStatus();

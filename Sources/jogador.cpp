@@ -24,11 +24,13 @@ Jogador * Jogador::returnAddress(int i){
 
 void Jogador::updatePos(int andar_casas, int sentido){
     Casa * c_atual = this->getPos();
-    this->setPos(Casa::walk(c_atual, andar_casas, sentido));
+    int j = this->getJogador();
+    this->setPos(Casa::walk(c_atual, andar_casas, sentido, j));
 }
 
 void Jogador::setPos(Casa * c){
     this->pos = c;
+    this->getPos()->addJogadores(this->getJogador());
 }
 
 void Jogador::setMoedas(int n_moedas){

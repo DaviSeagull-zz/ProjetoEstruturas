@@ -6,7 +6,6 @@ Casa::Casa(){
 	this->setPrev(NULL);
 	this->setStatus(0);
     this->setJogadorProprietario(0);
-    this->setJogadoresNull();
 }
 
 void Casa::setPos(int pos){
@@ -23,17 +22,17 @@ int Casa::setStatus(int status){
 
 void Casa::setJogadorProprietario(int jogador_proprietario){
 	this->jogador_proprietario = jogador_proprietario;
-
 }
 
-//void Casa::addJogadores(){
-//    jogadores_na_pos.push_back(this);
-//}
+void Casa::addJogadores(int j){
+    jogadores_na_pos.push_back(j);
+}
 
-void Casa::setJogadoresNull(){
-    for (int i = 0; i < sizeof(jogadores_na_pos)/4; i++){
-        this->jogadores_na_pos[i] = 0;
-    }
+
+void Casa::removeJogadores(Casa * pos_j, int j){
+    auto it = find(pos_j->jogadores_na_pos.begin(), pos_j->jogadores_na_pos.end(), j);
+    if (it != pos_j->jogadores_na_pos.end())
+        pos_j->jogadores_na_pos.erase(it);
 }
 
 void Casa::setProx(Casa * e){
@@ -56,23 +55,20 @@ Casa * Casa::getProx(){
 	return this->prox;
 }
 
-int * Casa::getJogadores(){
-	return this->jogadores_na_pos;
-}
 
 int Casa::getJogadorProprietario(){
 	return this->jogador_proprietario;
 }
 
-//void Casa::showJogadores() {
-//    for (vector<Jogador*>::iterator p = jogadores_na_pos.begin(); p != instances_.end(); ++p) {
-//        cout << (*p) << " ";
-//        cout << (*p)->getPos() << "\n";
-//    }
-//}
+void Casa::showJogadores() {
+    for (vector<int>::iterator p = jogadores_na_pos.begin(); p != jogadores_na_pos.end(); ++p) {
+        cout << (*p) << " ";
+    }
+}
 
-Casa * Casa::walk(Casa * pos_j, int andar_casas, int sentido){
+Casa * Casa::walk(Casa * pos_j, int andar_casas, int sentido, int j){
     Casa * pos_final = pos_j;
+    removeJogadores(pos_j, j);
     if(sentido == 1)
         for (int i = 0; i < andar_casas; i++)
             pos_final = pos_final->getProx();
