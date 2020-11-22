@@ -6,7 +6,6 @@
 #include <list>
 
 #include "casa.h"
-#include "tabuleiro.h"
 
 using namespace std;
 

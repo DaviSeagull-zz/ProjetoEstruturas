@@ -1,6 +1,7 @@
 
 #include "casa.h"
 
+
 Casa::Casa(){
 	this->setProx(NULL);
 	this->setPrev(NULL);
@@ -90,9 +91,6 @@ Casa * Casa::walk(Casa * pos_j, int andar_casas, int sentido, int j){
         pos_final->setJogadorProprietario(j);
         pos_final->setStatus(2);
     }
-
-
-
 
 
     return pos_final;

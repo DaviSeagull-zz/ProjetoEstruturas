@@ -25,17 +25,22 @@ int main()
 {
 	Tabuleiro tabuleiro;
 
-    cout << "\n-----------------------------------------------------------------";
-    cout << "\n              JOGO DA LISTA DUPLAMENTE ENCADEADA CIRCULAR        ";
-    cout << "\n-----------------------------------------------------------------";
+    cout << "\n******************************************************************";
+    cout << "\n*              JOGO DA LISTA DUPLAMENTE ENCADEADA CIRCULAR       *";
+    cout << "\n*                                                                *";
+    cout << "\n*                      Integrantes do grupo:                     *";
+    cout << "\n*                  31746357 - Davi Gomes Seagull                 *";
+    cout << "\n*             41903511 - Gisely Garcia Pereira Souza             *";
+    cout << "\n*           41908406 - Pedro Henrique Rodrigues Correa           *";
+    cout << "\n******************************************************************";
     cout << "\n";
 
-    int n_casas, n_jogadores, n_moedas, n_rodadas, rodada_atual = 1;
+    int n_casas, n_jogadores, n_moedas, n_rodadas, rodada_atual = 0;
 
     while(true){
         cout << "\nInforme a quantidade de casas a partir de 10: ";
         cin >> n_casas;
-        if(n_casas < 10)
+        if(n_casas < 3)
             cout << "\nDigite uma quantidade valida\n";
         else
             break;
@@ -67,18 +72,24 @@ int main()
 
     cleanScreen();
 
+    int j_vencedor = 0;
 	while (rodada_atual != n_rodadas){
+        int cont = 0;
+
         for(int i = 0; i < n_jogadores; i++){
             Jogador * j = Jogador::returnAddress(i);
 
             if(j->getVivo()){
                 cleanScreen();
+                cout << "Rodada: " << rodada_atual;
 
+                cout << "\nQuantidade de Moedas\n";
+                Jogador::showList();
                 tabuleiro.imprimir();
 
                 int opc_dados, sentido, andar_casas;
 
-                cout << "Vez do jogador " << (i+1) << "\n";
+                cout << "\nVez do jogador " << (i+1) << "\n";
                 cout << "\nRolando os dados...\n";
                 int d1 = dice();
                 int d2 = dice();
@@ -110,13 +121,42 @@ int main()
                 cout << "\nDigite 1 para sentido horario e 0 para sentido anti-horario: ";
                 cin >> sentido;
 
-
                 j->updatePos(andar_casas, sentido);
-            }
 
+
+            }
+            if(j->getMoedas() <= 0) {
+                    j->setDerrota();
+                    cont++;
+            } else
+                    j_vencedor = j->getJogador();
         }
+
+        if(cont == (n_jogadores - 1)){
+            cout << "FIM DE JOGO\n";
+            cout << "O vencedor foi " << j_vencedor;
+            break;
+        }
+
+
         rodada_atual++;
 	}
+
+    int jvencedor = 0;
+    int qtd_moedas = 0;
+	for(int i = 0; i < n_jogadores; i++) {
+        Jogador * j1 = Jogador::returnAddress(i);
+        if( j1->getMoedas() > qtd_moedas){
+            qtd_moedas = j1->getMoedas();
+            jvencedor = j1->getJogador();
+        }
+	}
+
+
+
+	cout << "FIM DE JOGO\n";
+    cout << "O vencedor foi " << jvencedor;
+
 
     return 0;
 }
