@@ -18,17 +18,8 @@ int Casa::setStatus(int status){
     this->status = status;
 }
 
-int Casa::getStatus(){
-	return this->status;
-}
-
 void Casa::setJogadorProprietario(int jogador_proprietario){
 	this->jogador_proprietario = jogador_proprietario;
-
-}
-
-int Casa::getJogadorProprietario(){
-	return this->jogador_proprietario;
 
 }
 
@@ -44,23 +35,38 @@ void Casa::setJogadoresNull(){
     }
 }
 
-int * Casa::getJogadores(){
-	return this->jogadores_na_pos;
-}
-
 void Casa::setProx(Casa * e){
 	this->prox = e;
-}
-
-Casa * Casa::getProx(){
-	return this->prox;
-
 }
 
 void Casa::setPrev(Casa * e){
 	this->prev = e;
 }
 
+int Casa::getStatus(){
+	return this->status;
+}
+
 Casa * Casa::getPrev(){
 	return this->prev;
+}
+
+Casa * Casa::getProx(){
+	return this->prox;
+}
+
+int * Casa::getJogadores(){
+	return this->jogadores_na_pos;
+}
+
+int Casa::getJogadorProprietario(){
+	return this->jogador_proprietario;
+}
+
+void walk(Casa * pos_j, int andar_casas){
+
+    for (int i = 0; i < andar_casas; i++){
+        pos_j = pos_j->getProx();
+    }
+
 }

@@ -3,15 +3,17 @@
 
 #include "casa.h"
 
-class tabuleiro {
+class Tabuleiro {
 
     private:
     Casa * inicio;
     Casa * c;
 
     public:
-    tabuleiro();
+    Tabuleiro();
+
     bool vazia();
+    Casa * getInicio();
     void incluir(Casa * e);
     void localizarFrente(int id);
     void localizarTras(int id);

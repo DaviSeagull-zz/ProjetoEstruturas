@@ -18,19 +18,26 @@ private:
 
 public:
     Casa();
+
+    static void walk(Casa* pos_j, int andar_casas);
+
     void setPos(int pos);
-    int getPos();
     void setJogadorProprietario(int jogador_proprietario);
-    int getJogadorProprietario();
     void setJogadores(int jogadores[]);
-    int * getJogadores();
     void setProx(Casa * e);
-    Casa * getProx();
     void setPrev(Casa * e);
-    Casa * getPrev();
     int setStatus(int status);
-    int getStatus();
     void setJogadoresNull();
+
+
+    int getPos();
+    int getJogadorProprietario();
+    int * getJogadores();
+    Casa * getProx();
+    Casa * getPrev();
+    int getStatus();
+
+
 
 };
 

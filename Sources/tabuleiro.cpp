@@ -3,16 +3,20 @@
 
 using namespace std;
 
-tabuleiro::tabuleiro() {
+Tabuleiro::Tabuleiro() {
 	this->inicio = NULL;
 	this->c = NULL;
 }
 
-bool tabuleiro::vazia(){
+Casa * Tabuleiro::getInicio(){
+    return this->inicio;
+}
+
+bool Tabuleiro::vazia(){
 	return this->inicio == NULL;
 }
 
-void tabuleiro::incluir(Casa * e) {
+void Tabuleiro::incluir(Casa * e) {
 	if (vazia()){
 		inicio = e;
 		e->setProx(e);
@@ -65,7 +69,7 @@ void tabuleiro::incluir(Casa * e) {
 //    }
 //}
 
-void tabuleiro::imprimir(){
+void Tabuleiro::imprimir(){
 
 	cout << "\nImpressao do tabuleiro\n";
 	cout << "Casa  Status  Jogador*  Jogadores** \n";
@@ -73,21 +77,23 @@ void tabuleiro::imprimir(){
 		Casa * cursor = inicio;
 		int n = 0;
 		while (true){
-            if (n < 9){
-                cout << "  " << cursor->getPos() << "    ";
-                cout << "  " << cursor->getStatus()<< "     ";
-                cout << "  " << cursor->getJogadorProprietario() << "          ";
-                int * j = cursor->getJogadores();
-                cout << j[n] << "\n";
+//            if (n < 9){
+//                cout << "  " << cursor->getPos() << "    ";
+//                cout << "  " << cursor->getStatus()<< "     ";
+//                cout << "  " << cursor->getJogadorProprietario() << "          ";
+//                int * j = cursor->getJogadores();
+//                cout << j[n] << "\n";
+//
+//            }
+//            else{
+//                cout << "  " << cursor->getPos() << "   ";
+//                cout << "  " << cursor->getStatus()<< "     ";
+//                cout << "  " << cursor->getJogadorProprietario() << "          ";
+//                int * j = cursor->getJogadores();
+//                cout << j[n] << "\n";
+//            }
+            cout << cursor << "\n";
 
-            }
-            else{
-                cout << "  " << cursor->getPos() << "   ";
-                cout << "  " << cursor->getStatus()<< "     ";
-                cout << "  " << cursor->getJogadorProprietario() << "          ";
-                int * j = cursor->getJogadores();
-                cout << j[n] << "\n";
-            }
             n++;
 
 
